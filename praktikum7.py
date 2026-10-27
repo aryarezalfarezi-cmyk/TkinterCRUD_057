@@ -20,3 +20,7 @@ CREATE TABLE IF NOT EXISTS nilai_siswa (
 )
 """)
 
+koneksi.commit()
+koneksi.close()
+
+
