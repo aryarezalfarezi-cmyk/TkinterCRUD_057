@@ -109,4 +109,29 @@ def submit_nilai():
         biologi, fisika, inggris
     )
 
+    # Simpan ke SQLite
+    koneksi = sqlite3.connect("nilai_siswa.db")
+    cursor = koneksi.cursor()
+
+    cursor.execute("""
+        INSERT INTO nilai_siswa
+        (nama_siswa, biologi, fisika, inggris,
+         prediksi_fakultas)
+        VALUES (?, ?, ?, ?, ?)
+    """, (nama, biologi, fisika, inggris, hasil))
+
+    koneksi.commit()
+    koneksi.close()
+
+    # Tampilkan hasil
+    label_hasil.config(
+        text=f"Hasil Prediksi: {hasil}"
+    )
+
+    messagebox.showinfo(
+        "Berhasil",
+        f"Data {nama} berhasil disimpan!\n"
+        f"Prediksi fakultas: {hasil}"
+    )
+
     
