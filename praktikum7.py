@@ -47,3 +47,21 @@ def prediksi_fakultas(biologi, fisika, inggris):
         return "Bahasa"
 
 
+# =========================
+# 3. MENAMPILKAN DATA
+# =========================
+def tampilkan_data():
+    for item in tabel.get_children():
+        tabel.delete(item)
+
+    koneksi = sqlite3.connect("nilai_siswa.db")
+    cursor = koneksi.cursor()
+
+    cursor.execute("""
+        SELECT nama_siswa, biologi, fisika, inggris,
+               prediksi_fakultas
+        FROM nilai_siswa
+        ORDER BY id DESC
+    """)
+
+    
