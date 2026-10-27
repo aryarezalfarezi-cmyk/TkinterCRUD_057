@@ -64,4 +64,49 @@ def tampilkan_data():
         ORDER BY id DESC
     """)
 
+    data = cursor.fetchall()
+    koneksi.close()
+
+    for baris in data:
+        tabel.insert("", tk.END, values=baris)
+
+
+# =========================
+# 4. FUNGSI SUBMIT
+# =========================
+def submit_nilai():
+    nama = entry_nama.get().strip()
+
+    if not nama:
+        messagebox.showwarning(
+            "Peringatan", "Nama siswa wajib diisi!"
+        )
+        entry_nama.focus_set()
+        return
+
+    try:
+        biologi = float(entry_biologi.get())
+        fisika = float(entry_fisika.get())
+        inggris = float(entry_inggris.get())
+    except ValueError:
+        messagebox.showerror(
+            "Input Tidak Valid",
+            "Semua nilai harus diisi dengan angka."
+        )
+        return
+
+    if any(
+        nilai < 0 or nilai > 100
+        for nilai in (biologi, fisika, inggris)
+    ):
+        messagebox.showerror(
+            "Nilai Tidak Valid",
+            "Nilai harus berada di antara 0 sampai 100."
+        )
+        return
+
+    hasil = prediksi_fakultas(
+        biologi, fisika, inggris
+    )
+
     
