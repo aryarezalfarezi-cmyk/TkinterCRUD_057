@@ -134,4 +134,13 @@ def submit_nilai():
         f"Prediksi fakultas: {hasil}"
     )
 
-    
+    # Perbarui tabel dan kosongkan input
+    tampilkan_data()
+
+    entry_nama.delete(0, tk.END)
+    entry_biologi.delete(0, tk.END)
+    entry_fisika.delete(0, tk.END)
+    entry_inggris.delete(0, tk.END)
+    entry_nama.focus_set()
+
+
