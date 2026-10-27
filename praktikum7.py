@@ -24,3 +24,26 @@ koneksi.commit()
 koneksi.close()
 
 
+# =========================
+# 2. FUNGSI PREDIKSI
+# =========================
+def prediksi_fakultas(biologi, fisika, inggris):
+    nilai_tertinggi = max(biologi, fisika, inggris)
+
+    # Jika ada nilai tertinggi yang sama
+    jumlah_tertinggi = [
+        nilai for nilai in (biologi, fisika, inggris)
+        if nilai == nilai_tertinggi
+    ]
+
+    if len(jumlah_tertinggi) > 1:
+        return "Seri - Perlu Peninjauan"
+
+    if biologi == nilai_tertinggi:
+        return "Kedokteran"
+    elif fisika == nilai_tertinggi:
+        return "Teknik"
+    else:
+        return "Bahasa"
+
+
