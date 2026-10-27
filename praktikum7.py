@@ -144,3 +144,25 @@ def submit_nilai():
     entry_nama.focus_set()
 
 
+# =========================
+# 5. GUI TKINTER
+# =========================
+root = tk.Tk()
+root.title("Aplikasi Prediksi Fakultas")
+root.geometry("850x700")
+root.configure(bg="#244fbd")
+
+judul = tk.Label(
+    root,
+    text="APLIKASI PREDIKSI FAKULTAS",
+    font=("Arial", 18, "bold"),
+    bg="#244fbd",
+    fg="white"
+)
+judul.pack(pady=15)
+
+frame_input = tk.Frame(
+    root, bg="#244fbd"
+)
+frame_input.pack(padx=20, pady=5)
+
